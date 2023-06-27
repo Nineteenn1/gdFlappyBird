@@ -1,0 +1,124 @@
+[gd_scene load_steps=5 format=3 uid="uid://vt7elu7kq8dp"]
+
+[ext_resource type="Script" path="res://scripts/Pipe.gd" id="1_p3ooi"]
+[ext_resource type="Texture2D" uid="uid://pxeun6q5sifu" path="res://gfx/pipe-green.png" id="2_ryx7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_depvm"]
+size = Vector2(47, 321.813)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctj71"]
+size = Vector2(51.0001, 92)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Pipes" type="Node2D" parent="."]
+position = Vector2(266, 0)
+script = ExtResource("1_p3ooi")
+
+[node name="Pipe1" type="Area2D" parent="Pipes"]
+z_index = 10
+position = Vector2(337, -63)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes/Pipe1"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_depvm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pipes/Pipe1"]
+position = Vector2(-3.05176e-05, -435.906)
+shape = SubResource("RectangleShape2D_depvm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pipes/Pipe1"]
+texture = ExtResource("2_ryx7a")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Pipes/Pipe1"]
+position = Vector2(0, -429)
+rotation = 3.14159
+texture = ExtResource("2_ryx7a")
+
+[node name="ScoreTrigger" type="Area2D" parent="Pipes/Pipe1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes/Pipe1/ScoreTrigger"]
+position = Vector2(0.500061, -216)
+shape = SubResource("RectangleShape2D_ctj71")
+
+[node name="Pipe2" type="Area2D" parent="Pipes"]
+z_index = 10
+position = Vector2(555, 37)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes/Pipe2"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_depvm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pipes/Pipe2"]
+position = Vector2(-3.05176e-05, -435.906)
+shape = SubResource("RectangleShape2D_depvm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pipes/Pipe2"]
+texture = ExtResource("2_ryx7a")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Pipes/Pipe2"]
+position = Vector2(0, -429)
+rotation = 3.14159
+texture = ExtResource("2_ryx7a")
+
+[node name="ScoreTrigger" type="Area2D" parent="Pipes/Pipe2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes/Pipe2/ScoreTrigger"]
+position = Vector2(0.500061, -216)
+shape = SubResource("RectangleShape2D_ctj71")
+
+[node name="Pipe3" type="Area2D" parent="Pipes"]
+z_index = 10
+position = Vector2(773, -19)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes/Pipe3"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_depvm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pipes/Pipe3"]
+position = Vector2(-3.05176e-05, -435.906)
+shape = SubResource("RectangleShape2D_depvm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pipes/Pipe3"]
+texture = ExtResource("2_ryx7a")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Pipes/Pipe3"]
+position = Vector2(0, -429)
+rotation = 3.14159
+texture = ExtResource("2_ryx7a")
+
+[node name="ScoreTrigger" type="Area2D" parent="Pipes/Pipe3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes/Pipe3/ScoreTrigger"]
+position = Vector2(0.500061, -216)
+shape = SubResource("RectangleShape2D_ctj71")
+
+[node name="Pipe4" type="Area2D" parent="Pipes"]
+z_index = 10
+position = Vector2(991, -107)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes/Pipe4"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_depvm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pipes/Pipe4"]
+position = Vector2(-3.05176e-05, -435.906)
+shape = SubResource("RectangleShape2D_depvm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pipes/Pipe4"]
+texture = ExtResource("2_ryx7a")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Pipes/Pipe4"]
+position = Vector2(0, -429)
+rotation = 3.14159
+texture = ExtResource("2_ryx7a")
+
+[node name="ScoreTrigger" type="Area2D" parent="Pipes/Pipe4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes/Pipe4/ScoreTrigger"]
+position = Vector2(0.500061, -216)
+shape = SubResource("RectangleShape2D_ctj71")
