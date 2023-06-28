@@ -1,21 +1,79 @@
-[gd_scene load_steps=19 format=3 uid="uid://dt14l6xav40ws"]
+[gd_scene load_steps=33 format=3 uid="uid://dt14l6xav40ws"]
 
 [ext_resource type="Script" path="res://scripts/Bird.gd" id="1_31vnr"]
+[ext_resource type="Texture2D" uid="uid://b4snxbui2y1h5" path="res://gfx/yellowbird-downflap.png" id="2_8og84"]
 [ext_resource type="Texture2D" uid="uid://b0xthv0wrdwkk" path="res://gfx/yellowbird-midflap.png" id="2_37n7i"]
+[ext_resource type="Texture2D" uid="uid://c6bvff2n3e1w8" path="res://gfx/bluebird-downflap.png" id="2_emdgw"]
+[ext_resource type="Texture2D" uid="uid://bvh4ntpeosoes" path="res://gfx/redbird-downflap.png" id="2_ssqp7"]
+[ext_resource type="Texture2D" uid="uid://c3l2r3c51xybg" path="res://gfx/bluebird-midflap.png" id="3_4s603"]
 [ext_resource type="Texture2D" uid="uid://tl1w3dhmtr8q" path="res://gfx/background-day.png" id="3_pk44y"]
 [ext_resource type="Script" path="res://scripts/Background.gd" id="3_rghoa"]
+[ext_resource type="Texture2D" uid="uid://cwjvf18sm5wix" path="res://gfx/redbird-midflap.png" id="3_rqf7n"]
+[ext_resource type="Texture2D" uid="uid://dq64adarxsxvv" path="res://gfx/bluebird-upflap.png" id="4_0t0d2"]
 [ext_resource type="Script" path="res://scripts/Basep.gd" id="4_1yqwd"]
+[ext_resource type="Texture2D" uid="uid://dmx2i1at8pwcb" path="res://gfx/redbird-upflap.png" id="4_pb2as"]
+[ext_resource type="Texture2D" uid="uid://c663kk4e5m7a4" path="res://gfx/yellowbird-upflap.png" id="4_ue32b"]
 [ext_resource type="Texture2D" uid="uid://t1ax8bm73254" path="res://gfx/base.png" id="5_w5lu7"]
-[ext_resource type="Script" path="res://scripts/Pipe.gd" id="6_v568o"]
 [ext_resource type="Texture2D" uid="uid://pxeun6q5sifu" path="res://gfx/pipe-green.png" id="7_viddh"]
 [ext_resource type="FontFile" uid="uid://cb2rtjop5k2rs" path="res://font/04B_19__.TTF" id="8_je1hk"]
 [ext_resource type="AudioStream" uid="uid://hbd8a2hiijqs" path="res://sfx/wing.wav" id="9_1iadg"]
 [ext_resource type="AudioStream" uid="uid://b1ofsvef805tn" path="res://sfx/point.wav" id="10_237aj"]
 [ext_resource type="AudioStream" uid="uid://og1lmjhq2kii" path="res://sfx/hit.wav" id="11_qe5vp"]
 [ext_resource type="Texture2D" uid="uid://umtgsmeyf07w" path="res://gfx/message.png" id="13_2ohip"]
+[ext_resource type="Script" path="res://scripts/Pipe.gd" id="15_5ohfx"]
+[ext_resource type="Script" path="res://scripts/Buttons.gd" id="22_c1otl"]
+[ext_resource type="Script" path="res://scripts/Manager.gd" id="22_neccy"]
+[ext_resource type="Texture2D" uid="uid://fmchia3dqvy2" path="res://gfx/Restart_button.png" id="23_r452s"]
+[ext_resource type="Texture2D" uid="uid://dxykond30sakg" path="res://gfx/Quit_button.png" id="24_15a5l"]
+[ext_resource type="Texture2D" uid="uid://btduptpe0ww6u" path="res://gfx/ScoreDisplay.png" id="26_l8l1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikft3"]
 size = Vector2(30, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fgh44"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_emdgw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4s603")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0t0d2")
+}],
+"loop": true,
+"name": &"flying_blue",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ssqp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rqf7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pb2as")
+}],
+"loop": true,
+"name": &"flying_red",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8og84")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_37n7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ue32b")
+}],
+"loop": true,
+"name": &"flying_yellow",
+"speed": 9.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70p5j"]
 size = Vector2(1346, 110)
@@ -35,17 +93,17 @@ size = Vector2(51.0001, 92)
 
 [node name="Bird" type="CharacterBody2D" parent="Game"]
 z_index = 10
-position = Vector2(124, -103)
+position = Vector2(107, -116)
 script = ExtResource("1_31vnr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Bird"]
 position = Vector2(-1, 333)
 shape = SubResource("RectangleShape2D_ikft3")
 
-[node name="Sprite2D" type="Sprite2D" parent="Game/Bird"]
-z_index = 10
-position = Vector2(0, 333)
-texture = ExtResource("2_37n7i")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Game/Bird"]
+position = Vector2(-3, 333)
+sprite_frames = SubResource("SpriteFrames_fgh44")
+animation = &"flying_blue"
 
 [node name="Background" type="Node2D" parent="Game"]
 script = ExtResource("3_rghoa")
@@ -93,7 +151,7 @@ shape = SubResource("RectangleShape2D_70p5j")
 
 [node name="Pipes" type="Node2D" parent="Game"]
 position = Vector2(266, 0)
-script = ExtResource("6_v568o")
+script = ExtResource("15_5ohfx")
 
 [node name="Pipe1" type="Area2D" parent="Game/Pipes"]
 z_index = 10
@@ -214,20 +272,91 @@ stream = ExtResource("10_237aj")
 [node name="Hit" type="AudioStreamPlayer2D" parent="Game/Sound"]
 stream = ExtResource("11_qe5vp")
 
-[node name="Score" type="Label" parent="Game"]
+[node name="UI" type="Node2D" parent="Game"]
+position = Vector2(182, 17)
+
+[node name="GameStart" type="Sprite2D" parent="Game/UI"]
+position = Vector2(13, 141)
+texture = ExtResource("13_2ohip")
+
+[node name="GameOver" type="Sprite2D" parent="Game/UI"]
+z_index = 10
+position = Vector2(18, 83)
+
+[node name="Score" type="Label" parent="Game/UI"]
 z_index = 11
-offset_left = 182.0
-offset_top = 17.0
-offset_right = 368.0
-offset_bottom = 158.0
+offset_right = 186.0
+offset_bottom = 141.0
 theme = SubResource("Theme_o3nuo")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("8_je1hk")
 theme_override_font_sizes/font_size = 50
 text = "0"
 
-[node name="Message" type="Sprite2D" parent="Game"]
-position = Vector2(195, 158)
-texture = ExtResource("13_2ohip")
+[node name="Button" type="Node2D" parent="Game/UI"]
+visible = false
+z_index = 10
+position = Vector2(-12, 148)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("22_c1otl")
+
+[node name="TextureButton" type="TextureButton" parent="Game/UI/Button"]
+offset_left = -78.0
+offset_top = 105.0
+offset_right = 24.0
+offset_bottom = 136.0
+texture_normal = ExtResource("23_r452s")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton2" type="TextureButton" parent="Game/UI/Button"]
+offset_left = 46.0
+offset_top = 105.0
+offset_right = 148.0
+offset_bottom = 137.0
+texture_normal = ExtResource("24_15a5l")
+
+[node name="ScoreDisplay" type="Sprite2D" parent="Game/UI"]
+visible = false
+z_index = 10
+position = Vector2(16, 174)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("26_l8l1g")
+
+[node name="Score2" type="Label" parent="Game/UI/ScoreDisplay"]
+z_index = 11
+offset_left = 20.0
+offset_top = -8.0
+offset_right = 206.0
+offset_bottom = 133.0
+theme = SubResource("Theme_o3nuo")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("8_je1hk")
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="Score3" type="Label" parent="Game/UI/ScoreDisplay"]
+z_index = 11
+offset_left = -36.6667
+offset_top = -6.66666
+offset_right = 149.333
+offset_bottom = 134.333
+theme = SubResource("Theme_o3nuo")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("8_je1hk")
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="Manager" type="Node2D" parent="Game"]
+script = ExtResource("22_neccy")
 
 [connection signal="body_entered" from="Game/Basep/BaseArea" to="Game/Basep" method="_on_base_area_body_entered" flags=18]
 [connection signal="body_entered" from="Game/Pipes/Pipe1" to="Game/Pipes" method="_on_pipe_body_entered" flags=18]

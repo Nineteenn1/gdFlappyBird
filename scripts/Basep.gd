@@ -26,4 +26,4 @@ func _on_base_area_body_entered(body):
 	if not get_parent().get_node("Pipes").game_over:
 		get_parent().get_node("Pipes").game_over = true
 		get_parent().get_node("Sound/Hit").play()
-		print("game lost")
+		body.set_visible(false)
